@@ -12,7 +12,7 @@ COUNTER=1
 read -p 'IP-address: ' ip
 while [ $COUNTER -lt 255 ]
 do
-  ping $(echo $ip | cut -c 1-10)$COUNTER -c 1
+  ping $(echo $ip | cut -b 1-10)$COUNTER -c 1
   COUNTER=$(( $COUNTER + 1 ))
 done
 
