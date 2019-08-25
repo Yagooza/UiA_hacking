@@ -6,14 +6,14 @@ echo hello world
 
 # 3) Develop a bash script that takes an IP (IPv4) from a user. Based on this IP, the script should ping all (255) IPs within that range. For example, if the user enters the IP 192.168.1.50, the script should ping every IP from 192.168.1.1 to 192.168.1.255 *Hint:* use read to get input from the user.
 
-#!/bin/bash
-read -p "Enter beginning IP-address: " host1
-read -p "Enter ending IP-address: " host2
-SUBNET=${host1%.*}
-netId1=${host1#$SUBNET.}
-netId2=${host2#$SUBNET.}
-for ((i=netId1; i<=netId2; i++)); do
-ping -c 1 ${SUBNET}.$i
+#!/usr/bin/env bash
+COUNTER=1
+
+read -p 'IP-address: ' ip
+while [ $COUNTER -lt 255 ]
+do
+  ping $(echo $ip | cut -c 1-10)$COUNTER -c 1
+  COUNTER=$(( $COUNTER + 1 ))
 done
 
 # 4) Update the script so that the script only prints the IPs of which there was a reply. *Hint:* It might be easier to temporarily store the results in a file
