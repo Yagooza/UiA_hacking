@@ -30,4 +30,4 @@ wait
 # 5) Update the script so that the user can use command-line arguments to ping an IP
 
 #!/usr/bin/env bash
-ping $1 -c 4
+ping $1 -c 1
