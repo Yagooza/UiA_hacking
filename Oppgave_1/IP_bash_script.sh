@@ -17,10 +17,12 @@ done
 
 # Update the script so that the script only prints the IPs of which there was a reply. *Hint:* It might be easier to temporarily store the results in a file
 #!/bin/bash
-prefix=${1:-192.168.1}
+#prefix=${1:-192.168.1}
 
-for ip in `seq 1 255`
-do
-  ( echo ping -c1 -w1 ${prefix}.${ip} > /dev/null 2>&1 && echo ${prefix}.${ip} ) &
-done
-wait
+#for ip in `seq 1 255`
+#do
+#  ( echo ping -c1 -w1 ${prefix}.${ip} > /dev/null 2>&1 && echo ${prefix}.${ip} ) &
+#done
+#wait
+nmap -T5 -sP ${host1}-255
+#test this on monday, for some reason can't ping local ips on my own home network like what lmao fuck this
