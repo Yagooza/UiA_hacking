@@ -1,4 +1,4 @@
-function scytaleEncode($cipher, $key) {
+function scytaleDecrypt($cipher, $key) {
     if($key -ge $cipher.Length -or $key -le 0) {
         return $cipher
     } else {
@@ -17,9 +17,16 @@ function scytaleEncode($cipher, $key) {
 return $encodedText 
 } 
 
+function scytaleEncrypt($cipher, $key) {
+    [int]$numOfCols = ($cipher.Length / $key)
+    $decryptedString = (scytaleDecrypt $cipher $numOfCols)
+    return $decryptedString
+}
 
-$cipher = "POWERSHELL" #Read-Host -Prompt "input text to encrypt"
+#$cipher = "POWERSHELLSUCKS" #Read-Host -Prompt "input text to encrypt"
+$cipher = "PSSOHUWECELKRLS" #Read-Host -Prompt "input text to encrypt"
 $key = 5 #Read-Host -Prompt "input key"
 
     Write-Host "Plain Text"
-    scytaleEncode $cipher $key
+  #  scytaleDecrypt $cipher $key
+    scytaleEncrypt $cipher $key
