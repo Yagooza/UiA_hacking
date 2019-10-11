@@ -3,7 +3,6 @@ import requests, re
 
 r = requests.get('https://links.datapor.no/')
 
-string = ''
 
 # Visit the site https://links.datapor.no (Lenker til en ekstern side.)
 # with the use of requests and print out the source code.
@@ -49,7 +48,7 @@ def task_4():
         urls = re.split('[.](?:[a-z])*/', str(urls))[0]
         if urls not in url_array:
             url_array.append(urls)
-    #url_array = re.split('.no', str(url_array))
+    
     for x in url_array:
         print(x)
 
