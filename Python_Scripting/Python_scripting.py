@@ -3,6 +3,7 @@ import requests, re
 
 r = requests.get('https://links.datapor.no/')
 
+string = ''
 
 # Visit the site https://links.datapor.no (Lenker til en ekstern side.)
 # with the use of requests and print out the source code.
@@ -39,18 +40,16 @@ def task_3():
         print(x)
 
 
-
-
 # print out all the unique hostname for each url.
 def task_4():
     url = re.findall('://(?:[a-zA-Z][^www]|[$-_@+])+', r.text)
     url_array = []
     urls_split = re.split("://", str(url))
     for urls in urls_split:
-        urls = re.split('\.', str(urls))[0]
+        urls = re.split('[.](?:[a-z])*/', str(urls))[0]
         if urls not in url_array:
             url_array.append(urls)
-
+    #url_array = re.split('.no', str(url_array))
     for x in url_array:
         print(x)
 
